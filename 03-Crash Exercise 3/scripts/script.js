@@ -5,6 +5,14 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+window.addEventListener('resize', function () {
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    renderer.setSize(width, height);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+});
+
 // Create the shape
 let geometry = new THREE.BoxGeometry(1,1,1);
 
